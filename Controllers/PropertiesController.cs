@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using HomeSphereService.Dto;
 using HomeSphereService.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +10,7 @@ namespace HomeSphereService.Controllers
     public class PropertiesController : ControllerBase
     {
         // In-memory thread-safe storage
-        private static readonly ConcurrentBag<Property> Properties = new();
+        private static readonly ConcurrentBag<Property> Properties = new ConcurrentBag<Property>(SampleData.GetSampleProperties());
         private static int _propertyIdCounter = 1;
         private static readonly ConcurrentBag<ContactRequest> ContactRequests = new();
         private static int _contactRequestIdCounter = 1;
